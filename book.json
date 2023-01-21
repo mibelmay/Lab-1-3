@@ -7,7 +7,7 @@
       "isPrimary": true
     },
     {
-      "name": "author",
+      "name": "authorName",
       "type": "string",
       "isPrimary": false
     },
@@ -17,8 +17,8 @@
       "isPrimary": false
     },
     {
-      "name": "publicationDate",
-      "type": "datetime",
+      "name": "publicationYear",
+      "type": "uint",
       "isPrimary": false
     },
     {
