@@ -1,0 +1,26 @@
+{
+    "name": "Book",
+    "columns": [
+        {
+            "name": "author",
+            "type": "string"
+        },
+        {
+            "name": "name",
+            "type": "string"
+        },
+        {
+            "name": "publicationDate",
+            "type": "datetime"
+        },
+        {
+            "name": "bookcase",
+            "type": "int"
+        },
+        {
+            "name": "bookshelf",
+            "type": "int"
+        }
+    ]
+}
+
