@@ -1,0 +1,28 @@
+﻿{
+	"name": "ReaderBook",
+	"columns": [
+		{
+			"name": "readerId",
+			"type": "uint",
+			"referencedTable": "Reader",
+			"isPrimary": true
+		},
+		{
+			"name": "bookId",
+			"type": "uint",
+			"referencedTable": "Book",
+			"isPrimary": true
+		},
+		{
+			"name": "borrowDate",
+			"type": "datetime",
+			"isPrimary": false
+
+		},
+		{
+			"name": "returndate",
+			"type": "datetime",
+			"isPrimary": false
+		}
+	]
+}
