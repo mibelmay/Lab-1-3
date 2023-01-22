@@ -2,15 +2,12 @@
 
 namespace Lab
 {
-    internal class TableLoader
+    internal class BooksTableLoader
     {
-        //создаем листы с айдишниками чтобы следить что они не повторяются 
+        //создаем лист с айдишниками чтобы следить что они не повторяются 
         public static List<uint>? BookIds = new List<uint>();
-        public static List<uint>? ReaderIds = new List<uint>();
 
         public static string BooksFileName;
-        public static string FeadersFileName;
-
         public static List<Book> LoadBooks(string path, string fileName)
         {
             List<Book> books = new List<Book>();
@@ -105,5 +102,7 @@ namespace Lab
             }
             return bookshelf;
         }
+
+
     }
 }
