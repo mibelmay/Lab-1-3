@@ -7,7 +7,7 @@ namespace Lab
         public uint Id;
         public string Name;
         public string AuthorName;
-        public uint PublicationYear;
+        public DateTime PublicationDate;
         public uint Bookcase;
         public uint Bookshelf;
     }
