@@ -5,8 +5,8 @@ namespace Lab
     internal class TableLoader
     {
         //создаем листы с айдишниками чтобы следить что они не повторяются 
-        public static List<uint> BookIds;
-        public static List<uint> ReaderIds;
+        public static List<uint>? BookIds = new List<uint>();
+        public static List<uint> ReaderIds = new List<uint>();
 
         public static List<Book> BookReader(string path)
         {
@@ -20,11 +20,11 @@ namespace Lab
                 books.Add(
                     new Book {
                         Id = LoadBookId(elements[0], i),
-                        Name = LoadName(elements[1], i),
-                        AuthorName = LoadAuthorName(elements[3], i),
-                        PublicationDate = LoadPublicationDate(elements[4], i),
-                        Bookcase = LoadBookcase(elements[5], i),
-                        Bookshelf = LoadBookshelf(elements[6], i),
+                        AuthorName = LoadAuthorName(elements[1], i),
+                        Name = LoadName(elements[2], i),
+                        PublicationDate = LoadPublicationDate(elements[3], i),
+                        Bookcase = LoadBookcase(elements[4], i),
+                        Bookshelf = LoadBookshelf(elements[5], i),
                     });
             }
 
