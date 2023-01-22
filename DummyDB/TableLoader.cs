@@ -6,9 +6,9 @@ namespace Lab
     {
         //создаем листы с айдишниками чтобы следить что они не повторяются 
         public static List<uint>? BookIds = new List<uint>();
-        public static List<uint> ReaderIds = new List<uint>();
+        public static List<uint>? ReaderIds = new List<uint>();
 
-        public static List<Book> BookReader(string path)
+        public static List<Book> LoadBooks(string path)
         {
             List<Book> books = new List<Book>();
             string[] lines = File.ReadAllLines(path);
@@ -48,11 +48,11 @@ namespace Lab
         {
             if(!uint.TryParse(element, out uint bookId))
             {
-                throw new ArgumentException($"Ошибка в строке {i}: несоответствие типов данных в столбце Id");
+                throw new ArgumentException($"Ошибка в строке {i + 1}: несоответствие типов данных в столбце Id");
             }
             if (BookIds.Contains(bookId))
             {
-                throw new ArgumentException($"Ошибка в строке {i}: повторяющийся Id");
+                throw new ArgumentException($"Ошибка в строке {i + 1}: повторяющийся Id");
             }
             BookIds.Add(bookId);
             return bookId;
@@ -62,7 +62,7 @@ namespace Lab
         {
             if(element == "")
             {
-                throw new ArgumentException($"Ошибка в строке {i}: отсутствует название книги");
+                throw new ArgumentException($"Ошибка в строке {i + 1}: отсутствует название книги");
             }
             return element;
         }
@@ -71,7 +71,7 @@ namespace Lab
         {
             if (element == "")
             {
-                throw new ArgumentException($"Ошибка в строке {i}: отсутствует имя автора");
+                throw new ArgumentException($"Ошибка в строке {i + 1}: отсутствует имя автора");
             }
             return element;
         }
@@ -80,7 +80,7 @@ namespace Lab
         {
             if (!(DateTime.TryParse(element, out DateTime publicDate)) || publicDate > DateTime.Now)
             {
-                throw new ArgumentException($"Ошибка в строке {i}: дата публикации книги введена неверно");
+                throw new ArgumentException($"Ошибка в строке {i + 1}: дата публикации книги введена неверно");
             }
             return publicDate;
         }
@@ -89,7 +89,7 @@ namespace Lab
         {
             if (!uint.TryParse(element, out uint bookcase))
             {
-                throw new ArgumentException($"Ошибка в строке {i}: номер книжного шкафа введен некорректно");
+                throw new ArgumentException($"Ошибка в строке {i + 1}: номер книжного шкафа введен некорректно");
             }
             return bookcase;
         }
@@ -98,7 +98,7 @@ namespace Lab
         {
             if (!uint.TryParse(element, out uint bookshelf))
             {
-                throw new ArgumentException($"Ошибка в строке {i}: номер книжной полки введен некорректно");
+                throw new ArgumentException($"Ошибка в строке {i + 1}: номер книжной полки введен некорректно");
             }
             return bookshelf;
         }

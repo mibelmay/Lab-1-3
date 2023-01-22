@@ -7,7 +7,7 @@ namespace Lab
         public static void Main()
         {
             string booksPath = Directory.GetCurrentDirectory() + "\\books.csv";
-            List<Book> list = TableLoader.BookReader(booksPath);
+            List<Book> list = TableLoader.LoadBooks(booksPath);
 
             Console.WriteLine($"{list[1].AuthorName}");
         }
