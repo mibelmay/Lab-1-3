@@ -13,6 +13,8 @@
             List<Entry> entries = new List<Entry>();
             string[] lines = File.ReadAllLines(path);
 
+            CheckEntriesLines(lines);
+
             for (int i = 0; i < lines.Length; i++)
             {
                 string[] elements = lines[i].Split(';');
@@ -32,6 +34,18 @@
 
 
             return entries;
+        }
+
+        public static void CheckEntriesLines(string[] lines)
+        {
+            for (int i = 0; i < lines.Length; i++)
+            {
+                if (lines[i].Split(';').Length != 4)
+                {
+                    Console.WriteLine($"Ошибка: в файле {EntriesFileName} количество столбцов не соответствует заданному");
+                    throw new ArgumentException("Проверьте правильность данных в файле");
+                }
+            }
         }
 
         public static Reader LoadReader(string element, int i)
