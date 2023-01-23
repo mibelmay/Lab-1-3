@@ -6,16 +6,12 @@ namespace Lab
     {
         public static void Main()
         {
-            string booksFileName = "books.csv";
-            List<Book> books = BooksTableLoader.LoadBooks($".\\{booksFileName}", booksFileName);
+            List<Book> books = BooksTableLoader.LoadBooks($".\\books.csv", "books.csv");
+            List<Reader> readers = ReadersTableLoader.LoadReaders($".\\readers.csv", "readers.csv");
+            List<Entry> entries = EntriesTableLoader.LoadEntries($".\\entries.csv", "entries.csv", readers, books);
 
-            string readersFileName = "readers.csv";
-            List<Reader> readers = ReadersTableLoader.LoadReaders($".\\{readersFileName}", readersFileName);
-
-            string entriesFileName = "entries.csv";
-            List<Entry> entries = EntryLoader.LoadEntries($".\\{entriesFileName}", entriesFileName, readers, books);
-
-            Console.Write($"{entries[0].Reader.FullName} читает {entries[0].Book.Name} с {entries[0].BorrowDate}");
+            Output.DisplayBooks(books, readers, entries);
         }
+
     }
 }

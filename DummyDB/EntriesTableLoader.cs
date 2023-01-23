@@ -1,6 +1,6 @@
 ﻿namespace Lab
 {
-    internal class EntryLoader
+    internal class EntriesTableLoader
     {
         public static List<Reader> Readers = new List<Reader>();
         public static List<Book> Books = new List<Book>();
