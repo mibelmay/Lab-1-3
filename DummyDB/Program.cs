@@ -10,8 +10,7 @@ namespace Lab
             List<Reader> readers = ReadersTableLoader.LoadReaders($".\\readers.csv", "readers.csv");
             List<Entry> entries = EntriesTableLoader.LoadEntries($".\\entries.csv", "entries.csv", readers, books);
 
-            Output.DisplayBooks(books, readers, entries);
+            Output.DisplayDB(books, readers, entries);
         }
-
     }
 }
