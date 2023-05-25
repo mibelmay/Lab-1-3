@@ -2,7 +2,7 @@
 
 namespace Lab
 {
-    internal class Output
+    class Output
     {
         public static void DisplayBooks(List<Book> books, List<Reader> readers, List<Entry> entries)
         {
@@ -29,12 +29,9 @@ namespace Lab
             int maxBookName = books.Max(book => book.Name.Length);
             int maxReader = readers.Max(reader => reader.FullName.Length);
             string format = $"| {{0, {maxBookAuthor}}} | {{1, {maxBookName}}} | {{2, {maxReader}}} | {{3, 18}} |";
-
-            //18 - длина DateTime, 13 - кол-во пробелов + кол-во |
-            int tableWidth = maxReader + maxBookName + maxBookAuthor + 18 + 13;
-            Console.WriteLine(new string('-', tableWidth));
-            Console.WriteLine(String.Format(format, "Автор", "Название", "Читает", "Взял"));
-            Console.WriteLine(new string('-', tableWidth));
+            //13 - кол-во пробелов + кол-во |
+            int tableWidth = maxReader + maxBookName + maxBookAuthor + DateTime.MinValue.ToString().Length + 13;
+            DisplayHeader(format, tableWidth);
             string author;
             string bookName;
             string readerName;
@@ -51,6 +48,12 @@ namespace Lab
                 date = entries[i].BorrowDate.ToString();
                 Console.WriteLine(String.Format(format, author, bookName, readerName, date));
             }
+            Console.WriteLine(new string('-', tableWidth));
+        }
+        private static void DisplayHeader(string format, int tableWidth)
+        {
+            Console.WriteLine(new string('-', tableWidth));
+            Console.WriteLine(String.Format(format, "Автор", "Название", "Читает", "Взял"));
             Console.WriteLine(new string('-', tableWidth));
         }
     }
