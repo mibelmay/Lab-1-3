@@ -28,33 +28,36 @@ namespace Lab
             int maxBookAuthor = books.Max(book => book.AuthorName.Length);
             int maxBookName = books.Max(book => book.Name.Length);
             int maxReader = readers.Max(reader => reader.FullName.Length);
-            string format = $"| {{0, {maxBookAuthor}}} | {{1, {maxBookName}}} | {{2, {maxReader}}} | {{3, 18}} |";
-            //13 - кол-во пробелов + кол-во |
-            int tableWidth = maxReader + maxBookName + maxBookAuthor + DateTime.MinValue.ToString().Length + 13;
+            int maxDate = DateTime.MinValue.ToString().Length;
+            string format = $"| {{0, {maxBookAuthor}}} | {{1, {maxBookName}}} | {{2, {maxReader}}} | {{3, {maxDate}}} |";
+            int tableWidth = maxReader + maxBookName + maxBookAuthor + maxDate + 13;
             DisplayHeader(format, tableWidth);
-            string author;
-            string bookName;
-            string readerName;
-            string date;
+
             for (int i = 0; i < entries.Count; i++)
             {
-                author = entries[i].Book.AuthorName;
-                bookName = entries[i].Book.Name;
-                readerName = entries[i].Reader.FullName;
-                if (entries[i].ReturnDate!=null)
-                {
-                    continue;
-                }
-                date = entries[i].BorrowDate.ToString();
-                Console.WriteLine(String.Format(format, author, bookName, readerName, date));
+                WriteTable(entries, i, format);
             }
             Console.WriteLine(new string('-', tableWidth));
         }
+
         private static void DisplayHeader(string format, int tableWidth)
         {
             Console.WriteLine(new string('-', tableWidth));
             Console.WriteLine(String.Format(format, "Автор", "Название", "Читает", "Взял"));
             Console.WriteLine(new string('-', tableWidth));
+        }
+
+        private static void WriteTable(List<Entry> entries, int i, string format)
+        {
+            string author = entries[i].Book.AuthorName;
+            string bookName = entries[i].Book.Name;
+            string readerName = entries[i].Reader.FullName;
+            if (entries[i].ReturnDate != null)
+            {
+                return;
+            }
+            string date = entries[i].BorrowDate.ToString();
+            Console.WriteLine(String.Format(format, author, bookName, readerName, date));
         }
     }
 }
